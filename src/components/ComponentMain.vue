@@ -69,7 +69,7 @@
           publicado por Square Enix para PlayStation 4, Microsoft Windows y Xbox One, así como para Nintendo Switch.
           Aunque en un principio la distribuidora planeó su lanzamiento para noviembre de 2016,
           finalmente lo publicó el 23 de febrero de 2017 en Japón.
-        </p>>
+        </p>
       </article>
     </div>
   </section>
