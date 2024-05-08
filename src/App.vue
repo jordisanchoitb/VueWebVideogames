@@ -106,11 +106,19 @@ nav {
     flex-wrap: wrap;
 }
 
-.divVideojocs {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
+.grid {
+    width: 80%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    grid-auto-rows: auto; 
     justify-content: space-around;
+}
+
+.divVideojocs {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 article.articleVideojocs {
