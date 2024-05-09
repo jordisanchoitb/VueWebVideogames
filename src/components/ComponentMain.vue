@@ -1,12 +1,29 @@
 <template>
   <section id="Videojuegos">
-    <h2 class="h2videojocs">VideoJuegos</h2>
+    <div id="TituloBoton">
+      <h2 class="h2videojocs">VideoJuegos</h2>
+      <button v-if="mostrarformadd" @click="OcultarFormAdd" class="botonesCRUD">Ocultar</button>
+      <button v-else @click="MostrarFormAdd" class="botonesCRUD">Añadir</button>
+    </div>
+    <div class="divCRUD">
+      <ComponentAdd v-if="mostrarformadd" @gameadd="sendgameadd"/>
+    </div>
+    <div class="rallaVideojocs"></div>
     <div class="divVideojocs">
       <div class="grid">
         <article v-for="(game, index) in games" :key="index" class="articleVideojocs">
           <img :src="game.image" :alt="game.name" class="articleVideojocs">
           <h3 class="h3videojocs">{{ game.name }}</h3>
           <p class="pvideojocs">{{ game.description }}</p>
+          <div>
+            <button v-if="mostrarformmodify[index]" @click="OcultarFormModify(index)"
+              class="botonesCRUD">Ocultar</button>
+            <button v-else @click="MostrarFormModify(index)" class="botonesCRUD">Modificar</button>
+            <button @click="GameDelete(game.name)"  class="botonesCRUD">Eliminar</button>
+          </div>
+          <div id="formModify" v-if="mostrarformmodify[index]">
+            <ComponentModify :gameobject="game" @gameobjectmodify="sendgameobjectmodify"/>
+          </div>
         </article>
       </div>
     </div>
@@ -14,48 +31,94 @@
 </template>
 
 <script>
-const images = require.context('../assets', true);
+import ComponentAdd from '../components/ComponentAdd.vue'
+import ComponentModify from '../components/ComponentModify.vue'
+
+//const images = require.context('../assets', true);
 
 export default {
   name: 'ComponentMain',
+  emits: ['gamedelete', 'gameobjectmodify'],
+  props: ["games"],
+  components: {
+    ComponentAdd,
+    ComponentModify,
+  },
+  methods: {
+    MostrarFormAdd() {
+      this.mostrarformadd = true;
+    },
+    OcultarFormAdd() {
+      this.mostrarformadd = false;
+    },
+    MostrarFormModify(index) {
+      this.mostrarformmodify[index] = true;
+    },
+    OcultarFormModify(index) {
+      this.mostrarformmodify[index] = false;
+    },
+    GameDelete(gamename) {
+      this.$emit('gamedelete', gamename);
+    },
+    sendgameobjectmodify(game) {
+      this.$emit('gameobjectmodify', game);
+    },
+    sendgameadd(game) {
+      this.$emit('gameadd', game);
+      this.OcultarFormAdd();
+    },
+  },
   data() {
     return {
-      games: [
-        {
-          name: 'Minecraft',
-          image: images("./minecraft.png"),
-          description: 'Minecraft es un videojuego de construcción de tipo «mundo abierto» o en inglés sandbox creado originalmente por el sueco Markus Persson (conocido comúnmente como «Notch»), que creo posteriormente Mojang Studios (actualmente parte de Microsoft). Fue lanzado el 17 de mayo de 2009, y después de numerosos cambios, su primera versión estable «1.0» fue publicada el 18 de noviembre de 2011.',
-        },
-        {
-          name: 'League of Legends',
-          image: images("./LOL.jpg"),
-          description: 'League of Legends (también conocido por sus siglas LoL), es un videojuego multijugador de arena de batalla en línea desarrollado y publicado por Riot Games. Inspirándose en Defense of the Ancients, un mapa personalizado para Warcraft III, los fundadores de Riot buscaron desarrollar un juego independiente del mismo género. Desde su lanzamiento en octubre de 2009, LoL ha sido un juego gratuito y se monetiza a través de la compra de elementos para la personalización de personajes.',
-        },
-        {
-          name: 'CSGO',
-          image: images('./csgoicon.png'),
-          description: 'Counter-Strike (CS) es una serie de videojuegos tácticos multijugador de disparos en primera persona en los que equipos de terroristas luchan para perpetrar un acto de terror (bombardeo, toma de rehenes, asesinato) mientras que los contraterroristas intentan prevenirlo (desactivación de bombas, rescate de rehenes, misión de escolta), fue lanzado el 2012 i su desarollador Valve Corporation.',
-        },
-        {
-          name: 'Xenoblade Chronicle 2',
-          image: images("./XenobladeChronicles2.jpg"),
-          description: 'Xenoblade Chronicles 2, conocido como Xenoblade 2 en Japón, es un videojuego de rol que ha sido desarrollado por Monolith Soft y publicado por Nintendo para la consola de videojuegos Nintendo Switch. Es parte de la serie Xeno, específicamente como una secuela del primer Xenoblade Chronicles, y fue lanzado mundialmente el 1 de diciembre de 2017.',
-        },
-        {
-          name: 'Stardew Valley',
-          image: images("./strardewvalley.jpg"),
-          description: 'Stardew Valley es un RPG de vida en el campo! Hereda la vieja granja de tu abuelo en Stardew Valley. Armado con herramientas de segunda mano y algo de dinero, te dispones a empezar tu nueva vida. ¿Podrás aprender a vivir de la tierra y a convertir esos campos de malezas en un hogar próspero? No va a ser fácil. Fue disenyado por Eric Barone y se estreno el 26 de febrero del 2016.',
-        },
-        {
-          name: 'NieR: Automata',
-          image: images("./nierautomata.png"),
-          description: 'NieR:Automata (ニーア オートマタ Nīa Ōtomata) es un videojuego de rol de acción desarrollado por PlatinumGames y publicado por Square Enix para PlayStation 4, Microsoft Windows y Xbox One, así como para Nintendo Switch. Aunque en un principio la distribuidora planeó su lanzamiento para noviembre de 2016, finalmente lo publicó el 23 de febrero de 2017 en Japón.',
-        }
-      ]
+      mostrarformadd: false,
+      mostrarformmodify: [],     
     }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
+<style scoped>
+#formModify {
+  margin-bottom: 0.5rem;
+}
+
+.rallaVideojocs {
+  border: 2px solid var(--azul);
+  width: 95%;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+#TituloBoton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.botonesCRUD {
+  background-color: var(--azul);
+  color: var(--naranja);
+  border: 2px solid var(--naranja);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  width: 5rem;
+  height: 2rem;
+  margin: 1rem;
+}
+
+.botonesCRUD:hover {
+  background-color: var(--naranja);
+  color: var(--azul);
+}
+
+.divCRUD {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+</style>
