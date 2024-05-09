@@ -72,9 +72,9 @@ export default {
     methods: {
         deleteGame(gamename) {
             this.games.delete(gamename);
-            this.updateLocalStorage();
+            this.updateLocalStorageGames();
         },
-        updateLocalStorage() {
+        updateLocalStorageGames() {
             localStorage.setItem("games", JSON.stringify(Array.from(this.games.entries())));
         },
         addGame(game) {
@@ -84,7 +84,7 @@ export default {
                 description: game.description,
             }
             this.games.set(game.name, tempgame);
-            this.updateLocalStorage();
+            this.updateLocalStorageGames();
             alert("Juego añadido correctamente");
         },
         modifyObject(game) {
@@ -110,7 +110,7 @@ export default {
                 }
                 this.games.set(game.name, tempgame);
             }
-            this.updateLocalStorage();
+            this.updateLocalStorageGames();
         },
     },
     mounted() {

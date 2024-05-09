@@ -6,7 +6,7 @@
       <label for="description">Nueva descripcion:</label>
       <textarea id="description" name="description" :value="gameobject.description"></textarea><br><br>
       <label for="image">Nueva imagen:</label>
-      <input type="file" id="image" name="image"><br><br>
+      <input type="file" id="image" name="image" @change="onFileSelected"><br><br>
       <input id="submitinput" type="submit" value="Submit">
     </form>
   </section>
@@ -19,17 +19,26 @@ export default {
   emits: ['gameobjectmodify'],
   data() {
     return {
-      
+      image: '',
     }
   }, 
   methods: {
+    onFileSelected(event) {
+      const selectedFile = event.target.files[0];
+      if (!selectedFile) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.image = reader.result;
+      }
+      reader.readAsDataURL(selectedFile);
+    },
     submitformmodify(event) {
       event.preventDefault();
       let game = {
         oldname: this.gameobject.name,
         name: event.target.name.value,
         description: event.target.description.value,
-        image: event.target.image.value,
+        image: this.image,
       }
       this.$emit('gameobjectmodify', game);
     }

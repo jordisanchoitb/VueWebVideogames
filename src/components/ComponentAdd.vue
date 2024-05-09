@@ -21,20 +21,25 @@ export default {
       name: '',
       description: '',
       image: '',
-      selectedFile: null,
+      imagesToSave: [],
     }
   },
   methods: {
     onFileSelected(event) {
-      this.selectedFile = event.target.files[0];
+      const selectedFile = event.target.files[0];
+      if (!selectedFile) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.image = reader.result;
+      }
+      reader.readAsDataURL(selectedFile);
     },
     submitformadd(event) {
       event.preventDefault();
       let game = {
-        selectedFile: this.selectedFile,
         name: this.name,
         description: this.description,
-        image: this.selectedFile,
+        image: this.image,
       }
       this.$emit('gameadd', game);
       let inputname = document.getElementById('name');

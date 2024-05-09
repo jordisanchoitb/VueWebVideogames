@@ -38,7 +38,7 @@ import ComponentModify from '../components/ComponentModify.vue'
 
 export default {
   name: 'ComponentMain',
-  emits: ['gamedelete', 'gameobjectmodify'],
+  emits: ['gamedelete', 'gameobjectmodify', 'gameadd'],
   props: ["games"],
   components: {
     ComponentAdd,
