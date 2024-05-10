@@ -15,7 +15,7 @@
           <img :src="game.image" :alt="game.name" class="articleVideojocs">
           <h3 class="h3videojocs">{{ game.name }}</h3>
           <p class="pvideojocs">{{ game.description }}</p>
-          <div>
+          <div id="crudsmoddel">
             <button v-if="mostrarformmodify[index]" @click="OcultarFormModify(index)"
               class="botonesCRUD">Ocultar</button>
             <button v-else @click="MostrarFormModify(index)" class="botonesCRUD">Modificar</button>
@@ -83,6 +83,13 @@ export default {
   margin-bottom: 0.5rem;
 }
 
+#crudsmoddel {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
 .rallaVideojocs {
   border: 2px solid var(--azul);
   width: 95%;
@@ -106,7 +113,6 @@ export default {
   font-weight: bold;
   width: 5rem;
   height: 2rem;
-  margin: 1rem;
 }
 
 .botonesCRUD:hover {

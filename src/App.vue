@@ -445,4 +445,244 @@ img.articleVideojocs {
     display: flex;
     justify-content: space-around;
 }
+
+@media (min-width: 768px) and (max-width: 1500px) {
+    header {
+        font-size: 1.5rem;
+    }
+
+    #Trucos {
+        margin: 0%;
+    }
+
+    .imgmenu {
+        width: 60px;
+        height: 60px;
+    }
+
+    .trucosul {
+        padding: 1rem;
+    }
+
+    .navul {
+        display: none;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .nava {
+        padding: 0.5rem;
+        font-size: 1.2rem;
+    }
+
+    .divVideojocs {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .grid {
+        width: 80%;
+        height: auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-auto-rows: auto;
+        justify-items: center;
+        align-items: center;
+    }
+
+    article.articleVideojocs {
+        width: 200px;
+        height: auto;
+        border: 2px solid var(--naranja);
+        border-radius: 10px;
+        margin-bottom: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    img.articleVideojocs {
+        width: 200px;
+        height: 100px;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+
+    #Noticias {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .divnoticias {
+        flex-direction: column;
+        align-items: center;
+    }
+    .articlenoticias {
+        scale: 0.8;
+        margin-bottom: 0%;
+    }
+
+    .h2videojocs, .h2Trucos, .h2Noticias, .h2ranking {
+        font-size: 1.5rem;
+    }
+
+    .pvideojocs, .pnoticias, .pranking {
+        font-size: 0.9rem;
+    }
+
+    #asidepagprincipal {
+        width: 75%;
+        float: left;
+    }
+
+    #Ranking {
+        margin-top: 20px;
+    }
+
+    .divranking {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .articleranking {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .imgranking {
+        width: 60px;
+        height: 60px;
+        margin: 0%;
+    }
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+    header {
+        font-size: 1.5rem;
+    }
+
+    #Trucos {
+        margin: 0%;
+    }
+
+    .imgmenu {
+        width: 60px;
+        height: 60px;
+    }
+
+    .trucosul {
+        padding: 1rem;
+    }
+
+    .navul {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .nava {
+        padding: 0.5rem;
+        font-size: 1.2rem;
+    }
+
+    .divVideojocs {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .grid {
+        width: 80%;
+        height: auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-auto-rows: auto;
+        justify-items: center;
+        align-items: center;
+    }
+
+    article.articleVideojocs {
+        width: 200px;
+        height: auto;
+        border: 2px solid var(--naranja);
+        border-radius: 10px;
+        margin-bottom: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    img.articleVideojocs {
+        width: 200px;
+        height: 100px;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+
+    #Noticias {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .divnoticias {
+        flex-direction: column;
+        align-items: center;
+    }
+    .articlenoticias {
+        scale: 0.8;
+        margin-bottom: 0%;
+    }
+
+    .h2videojocs, .h2Trucos, .h2Noticias, .h2ranking {
+        font-size: 1.5rem;
+    }
+
+    .pvideojocs, .pnoticias, .pranking {
+        font-size: 0.9rem;
+    }
+
+    #asidepagprincipal {
+        width: 75%;
+        float: left;
+    }
+
+    #Ranking {
+        margin-top: 20px;
+    }
+
+    .divranking {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .articleranking {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .imgranking {
+        width: 60px;
+        height: 60px;
+        margin: 0%;
+    }
+
+}
 </style>

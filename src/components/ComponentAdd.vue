@@ -21,7 +21,6 @@ export default {
       name: '',
       description: '',
       image: '',
-      imagesToSave: [],
     }
   },
   methods: {

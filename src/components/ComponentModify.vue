@@ -58,7 +58,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 #formadd {
@@ -96,5 +96,62 @@ form>input {
 #submitinput:hover {
   background-color: var(--naranja);
   color: var(--azul);
+}
+@media (min-width: 768px) and (max-width: 1500px) {
+  #formadd {
+    width: 70%;
+  }
+  #submitinput {
+    background-color: var(--azul);
+    color: var(--naranja);
+    font-weight: bold;
+    border: 2px solid var(--naranja);
+    border-radius: 1rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    font-size: medium;
+  }
+  #name {
+    width: 90%;
+    font-size: small;
+  }
+  #description {
+    width: 90%;
+    overflow-y: auto;
+    height: 100px;
+    max-height: 300px;
+  }
+  #image {
+    width: 95%;
+  }
+}
+
+@media (max-width: 768px) {
+  #formadd {
+    width: 70%;
+  }
+  #submitinput {
+    background-color: var(--azul);
+    color: var(--naranja);
+    font-weight: bold;
+    border: 2px solid var(--naranja);
+    border-radius: 1rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    font-size: medium;
+  }
+  #name {
+    width: 90%;
+    font-size: small;
+  }
+  #description {
+    width: 90%;
+    overflow-y: auto;
+    height: 100px;
+    max-height: 300px;
+  }
+  #image {
+    width: 95%;
+  }
 }
 </style>
